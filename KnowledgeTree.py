@@ -9,9 +9,12 @@ import re
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Load environment variables
-load_dotenv()
-print("Loaded Mistral API key:", os.getenv("MISTRAL_API_KEY"))
+# Load environment variables (for local dev only)
+# load_dotenv()
+# MISTRAL_API_KEY = os.getenv("MISTRAL_API_KEY")
+
+# For Streamlit Community Cloud, use st.secrets
+MISTRAL_API_KEY = st.secrets["MISTRAL_API_KEY"]
 
 # LLM and prompt
 llm = Mistral(model_name="mistral-tiny", temperature=0.7)
